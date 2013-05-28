@@ -1,7 +1,8 @@
+/* jshint globalstrict:true */
 'use strict';
 
 describe('Directive: chart', function () {
-  beforeEach(module('angularHighchartsChartDirectiveApp'));
+  beforeEach(module('angular.highcharts'));
 
   var element;
 

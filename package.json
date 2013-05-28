@@ -3,11 +3,15 @@
   "description": "Angular Highcharts - Charts in your AngularJS app!",
   "version": "0.0.1",
   "homepage": "https://github.com/frapontillo/angular-highcharts-chart-directive",
-  "author": "Francesco Pontillo <francescopontillo@gmail.com>",
+  "author": {
+	"name": "Francesco Pontillo <francescopontillo@gmail.com>"
+  },
+  "license": "Apache License 2.0",
   "repository": {
     "type": "git",
     "url": "git://github.com/frapontillo/angular-highcharts-chart-directive.git"
   },
+  "main": "dist/angular-highcharts.js",
   "dependencies": {},
   "engines": {
     "node": ">=0.8.0"
@@ -16,6 +20,18 @@
     "test": "grunt test"
   },
   "devDependencies": {
-    "grunt": "~0.4.1"
+    "karma": "~0.8.5",
+    "grunt": "~0.4.1",
+    "grunt-contrib-watch": "~0.4.x",
+    "grunt-contrib-concat": "~0.3.x",
+    "grunt-contrib-uglify": "~0.2.x",
+    "grunt-contrib-jshint": "~0.4.x",
+    "grunt-contrib-copy": "~0.4.x",
+    "grunt-bump": "0.0.2",
+    "grunt-karma": "~0.4.x",
+    "grunt-conventional-changelog": "0.0.12",
+    "grunt-express": "~0.3.x",
+    "grunt-ngmin": "0.0.2",
+    "express": "~3.2.x"
   }
 }

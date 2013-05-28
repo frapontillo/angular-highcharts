@@ -1,7 +1,8 @@
+/* jshint globalstrict:true */
 'use strict';
 
 angular.module('angular.highcharts')
-  .directive('chart', ['$filter',
+.directive('chart', ['$filter',
     function ($filter) {
         return {
             restrict: 'E',
@@ -9,8 +10,9 @@ angular.module('angular.highcharts')
             transclude: true,
             replace: true,
             scope: {
-                value: '@',
-                hiddenSeries: '='
+                value: '=',
+                hiddenSeries: '=',
+                type: '='
             },
 
             link: function (scope, element, attrs) {
@@ -26,7 +28,7 @@ angular.module('angular.highcharts')
                         if (!series[s].visible) {
                             hiddenItems.push(s);
                         }
-                    };
+                    }
                     // If the new array is different than the old one, edit the scope variable
                     if (!angular.equals(scope.hiddenSeries, hiddenItems)) {
                         angular.copy(hiddenItems, scope.hiddenSeries);
@@ -35,16 +37,7 @@ angular.module('angular.highcharts')
                     }
                 };
 
-                var chartsDefaults = {
-                    chart: {
-                        renderTo: element[0],
-                        events: { redraw: redrawCallback },
-                        type: attrs.type || null,
-                        height: attrs.height || null,
-                        width: attrs.width || null
-                    }
-                };
-
+                // Consolidate the series visibility
                 var showHideSeries = function () {
                     if (!scope.chart) return;
                     // Loop through the chart series
@@ -56,19 +49,55 @@ angular.module('angular.highcharts')
                     scope.chart.redraw();
                 };
 
-                // Update when charts data changes
-                scope.$watch(function () { return attrs.value; }, function (value) {
-                    if (!attrs.value) return;
-                    // We need deep copy in order to NOT override original chart object.
-                    // This allows us to override chart data member and still the keep
-                    // our original renderTo will be the same
-                    var deepCopy = true;
-                    var newSettings = {};
-                    $.extend(deepCopy, newSettings, chartsDefaults, JSON.parse(attrs.value));
-                    scope.chart = new Highcharts.Chart(newSettings);
+                // All of the functions are triggered by Highcharts, so they
+                // are executed outside of AngularJS.
+                // Every function defined by the user must be followed by scope.$apply().
+                var setScopeApplyToFns = function (chartValues) {
+                    if (!chartValues || !chartValues.exporting) return;
+					
+                    for (var x in chartValues.exporting.buttons) {
+                        var onClickFunction = chartValues.exporting.buttons[x].onclick;
+                        if (onClickFunction) {
+							// TODO: move the function definition outside of the loop
+                            chartValues.exporting.buttons[x].onclick = function () {
+                                onClickFunction();
+                                scope.$apply();
+                            };
+                        }
+                    }
+                };
+
+                var updateChart = function () {
+                    if (!scope.value) return;
+                    // Chart default values
+                    var chartsDefaults = {
+                        chart: {
+                            renderTo: element[0],
+                            events: { redraw: redrawCallback },
+                            type: scope.type || null,
+                            height: attrs.height || null,
+                            width: attrs.width || null
+                        }
+                    };
+					// Copy the chart object so we don't override it
+                    var settings = {};
+					angular.extend(settings, chartsDefaults);
+					angular.extend(settings, scope.value);
+                    // $.extend(deepCopy, settings, chartsDefaults, scope.value);
+                    // Apply the scope changes after every function
+                    setScopeApplyToFns(settings);
+                    // Destroy the chart so we don't leak memory
+                    if (scope.chart) scope.chart.destroy();
+                    // Create the new chart
+                    scope.chart = new Highcharts.Chart(settings);
                     // Consolidate series
                     showHideSeries();
-                });
+                };
+
+                // Update when charts data changes
+                scope.$watch('value', updateChart);
+                // Update when chart type changes
+                scope.$watch('type', updateChart);
 
                 // Hide or show some series when they change
                 scope.$watch('hiddenSeries', function (newValue, oldValue) {
@@ -76,7 +105,7 @@ angular.module('angular.highcharts')
                     showHideSeries();
                 });
             }
-        }
+        };
 
     }
 ]);
