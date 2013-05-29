@@ -8,7 +8,9 @@ Angular Highcharts - Easy Highcharts for your AngularJS app!
 ```shell
 $ npm install karma -g
 $ npm install grunt-cli -g
+$ npm install bower -g
 $ npm install
+$ bower install
 $ grunt test
 $ grunt build
 ```
