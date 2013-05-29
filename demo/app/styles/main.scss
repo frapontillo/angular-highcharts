@@ -1,0 +1,38 @@
+$iconSpritePath:          "/images/glyphicons-halflings.png" !default;
+$iconWhiteSpritePath:     "/images/glyphicons-halflings-white.png" !default;
+
+@import 'compass_twitter_bootstrap';
+@import 'compass_twitter_bootstrap_responsive';
+
+.hero-unit {
+    margin: 50px auto 0 auto;
+    width: 300px;
+}
+
+.jumbotron {
+  background:
+    radial-gradient(black 15%, transparent 16%) 0 0,
+    radial-gradient(black 15%, transparent 16%) 8px 8px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px,
+    radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+  background-color:#282828;
+  background-size:16px 16px;
+
+  &:after {
+    background: url("");
+  }
+}
+
+.bs-docs-social {
+  background: rgba(245, 245, 245, 0.15);
+  border-top: 1px solid rgba(245, 245, 245, 0.25);
+  border-bottom: 1px solid rgba(221, 221, 221, 0.25);
+
+  ul.bs-docs-social-buttons li {
+    padding: 5px 0px;
+  }
+}
+
+.page-header {
+  border-bottom: 1px solid rgb(173, 173, 173);
+}
