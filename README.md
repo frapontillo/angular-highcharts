@@ -1,4 +1,4 @@
-angular-highcharts-chart-directive
+angular-highcharts-chart-directive [![Build Status](https://travis-ci.org/frapontillo/angular-highcharts.png?branch=develop)](https://travis-ci.org/frapontillo/angular-highcharts?branch=develop)
 ==================================
 
 Angular Highcharts - Easy Highcharts for your AngularJS app!
