@@ -2,3 +2,6 @@ components/
 node_modules/
 !.gitignore
 demo/.idea
+bower_components/
+dist/
+npm-debug.log

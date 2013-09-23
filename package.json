@@ -1,7 +1,7 @@
 {
   "name": "angular-highcharts-chart-directive",
   "description": "Angular Highcharts - Charts in your AngularJS app!",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/frapontillo/angular-highcharts-chart-directive",
   "author": {
 	"name": "Francesco Pontillo <francescopontillo@gmail.com>"

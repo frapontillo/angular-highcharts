@@ -1,18 +1,21 @@
 // Karma configuration
-// Generated on Mon May 27 2013 17:48:17 GMT+0200 (ora legale Europa occidentale)
+// Generated on Mon Sep 23 2013 10:40:30 GMT+0200 (ora legale Europa occidentale)
 
 
 // base path, that will be used to resolve files and exclude
 basePath = '';
 
-
 // list of files / patterns to load in the browser
 files = [
   JASMINE,
   JASMINE_ADAPTER,
-  'components/**/*.js',
-  'test/**/*Spec.js',
-  'test/**/*Spec.js'
+  'bower_components/angular/angular.js',
+  'bower_components/angular-mocks/angular-mocks.js',
+  'bower_components/jquery/jquery.js',
+  'bower_components/highcharts.com/js/highcharts.src.js',
+  'bower_components/highcharts.com/js/highcharts-more.src.js',
+  'src/**/*.js',
+  'test/**/*.js'
 ];
 
 

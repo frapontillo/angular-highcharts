@@ -1,14 +1,20 @@
 /* jshint globalstrict:true */
+/* global describe */
+/* global beforeEach */
+/* global module */
+/* global it */
+/* global inject */
+/* global expect */
 'use strict';
 
 describe('Directive: chart', function () {
-  beforeEach(module('angular.highcharts'));
+  beforeEach(module('frapontillo.highcharts'));
 
   var element;
 
-  it('should make hidden element visible', inject(function ($rootScope, $compile) {
+  it('should should create a chart', inject(function ($rootScope, $compile) {
     element = angular.element('<chart></chart>');
     element = $compile(element)($rootScope);
-    expect(element.text()).toBe('this is the chart directive');
+    expect(element).not.toBe(undefined);
   }));
 });
