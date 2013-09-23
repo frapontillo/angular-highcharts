@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 		' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
 		' * @author <%= pkg.author.name %>\n' +
 		' * @link <%= pkg.homepage %>\n' +
-        ' * @license <%= pkg.license %> */\n\n'
+        ' * @license <%= pkg.license %>\n */\n\n'
     },
     watch: {
       scripts: {
@@ -43,14 +43,30 @@ module.exports = function (grunt) {
       }
     },
     karma: {
+      options: {
+          configFile: 'karma.conf.js',
+          singleRun: true
+      },
       unit: {
-        configFile: 'karma.conf.js',
-        singleRun: true
+        browsers: ['PhantomJS']
+      },
+      local: {
+          browsers: ['Chrome']
       }
     },
     concat: {
+      options: {
+        banner: '<%= meta.banner %>',
+        process: function(src, filepath) {
+          return src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
+        }
+      },
       src: {
         src: ['src/**/*.js'],
+        dest: 'dist/angular-highcharts.js'
+      },
+      banner: {
+        src: 'dist/angular-highcharts.js',
         dest: 'dist/angular-highcharts.js'
       }
     },
@@ -67,7 +83,10 @@ module.exports = function (grunt) {
         }
       }
     },
-	uglify: {
+    uglify: {
+      options: {
+        banner: '<%= meta.banner %>'
+      },
       src: {
         files: {
           'dist/angular-highcharts.min.js': '<%= concat.src.dest %>'
@@ -91,9 +110,9 @@ module.exports = function (grunt) {
 
   });
 
-  grunt.registerTask('default', ['jshint', 'karma']);
-  grunt.registerTask('test', ['karma']);
-  grunt.registerTask('build', ['jshint', 'karma', 'concat', 'ngmin', 'copy:demo', 'uglify']);
+  grunt.registerTask('default', ['jshint', 'karma:unit']);
+  grunt.registerTask('test', ['karma:unit']);
+  grunt.registerTask('build', ['jshint', 'karma:unit', 'concat:src', 'ngmin', 'concat:banner', 'copy:demo', 'uglify']);
 
   // For development purpose.
   grunt.registerTask('dev', ['jshint', 'karma:unit',  'concat', 'copy:demo', 'watch:livereload']);

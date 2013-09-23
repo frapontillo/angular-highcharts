@@ -3,12 +3,12 @@
   "name": "angular-highcharts",
   "description": "Angular Highcharts - Charts in your AngularJS app!",
   "version": "0.1.0",
-  "homepage": "https://github.com/frapontillo/angular-highcharts-chart-directive",
+  "homepage": "https://github.com/frapontillo/angular-highcharts",
   "repository": {
     "type": "git",
-    "url": "git://github.com/frapontillo/angular-highcharts-chart-directive.git"
+    "url": "git://github.com/frapontillo/angular-highcharts.git"
   },
-  "main": "./dist/angular-highcharts-chart.min.js",
+  "main": "./dist/angular-highcharts.min.js",
   "dependencies": {
     "angular": "~1.0.8",
     "highcharts.com": "~v3.0.5",
