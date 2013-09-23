@@ -25,7 +25,7 @@ angular.module('myApp', ['frapontillo.highcharts']);
 ##Test and build
 
 ```shell
-$ npm install grunt-cli bower karma grunt-karma -g
+$ npm install grunt-cli bower -g
 $ npm install
 $ bower install
 $ grunt test
