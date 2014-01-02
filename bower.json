@@ -10,8 +10,8 @@
   },
   "main": "./dist/angular-highcharts.min.js",
   "dependencies": {
-    "angular": "~1.0.8",
-    "highcharts.com": "~v3.0.5",
+    "angular": "~1.2.6",
+    "highcharts.com": "~3.0.7",
     "jquery": "~2.0.3"
   },
   "devDependencies": {
