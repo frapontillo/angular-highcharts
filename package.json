@@ -29,6 +29,7 @@
     "grunt-contrib-jshint": "~0.9.x",
     "grunt-ngmin": "~0.0.3",
     "karma-chrome-launcher": "^0.1.2",
-    "karma-phantomjs-launcher": "^0.1.2"
+    "karma-phantomjs-launcher": "^0.1.2",
+    "karma-jasmine": "^0.1.5"
   }
 }
