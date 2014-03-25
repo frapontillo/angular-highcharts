@@ -10,11 +10,11 @@
   },
   "main": "./dist/angular-highcharts.min.js",
   "dependencies": {
-    "angular": "~1.2.6",
-    "highcharts.com": "~3.0.7",
+    "angular": "~1.2.15",
+    "highcharts-release": "highslide-software/highcharts-release#3.0.10",
     "jquery": "~2.0.3"
   },
   "devDependencies": {
-    "angular-mocks": "~1.0.8"
+    "angular-mocks": "~1.2.15"
   }
 }

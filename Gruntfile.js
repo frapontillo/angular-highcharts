@@ -2,13 +2,9 @@ module.exports = function (grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-bump');
-  grunt.loadNpmTasks('grunt-express');
   grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-conventional-changelog');
   grunt.loadNpmTasks('grunt-ngmin');
 
   grunt.initConfig({
@@ -64,23 +60,12 @@ module.exports = function (grunt) {
       src: {
         src: ['src/**/*.js'],
         dest: 'dist/angular-highcharts.js'
-      },
-      banner: {
-        src: 'dist/angular-highcharts.js',
-        dest: 'dist/angular-highcharts.js'
       }
     },
     ngmin: {
       src: {
         src: '<%= concat.src.dest %>',
         dest: '<%= concat.src.dest %>'
-      }
-    },
-    copy: {
-      demo: {
-        files: {
-          'demo/js/angular-highcharts-latest.js': 'dist/angular-highcharts.js'
-        }
       }
     },
     uglify: {
@@ -97,24 +82,14 @@ module.exports = function (grunt) {
       options: {
         dest: 'CHANGELOG.md'
       }
-    },
-    express: {
-      server: {
-        options: {
-          port: 3005,
-          bases: '.',
-          server: __dirname + '/server.js'
-        }
-      }
     }
 
   });
 
   grunt.registerTask('default', ['jshint', 'karma:unit']);
   grunt.registerTask('test', ['karma:unit']);
-  grunt.registerTask('build', ['jshint', 'karma:unit', 'concat:src', 'ngmin', 'concat:banner', 'copy:demo', 'uglify']);
+  grunt.registerTask('build', ['jshint', 'karma:unit', 'concat:src', 'ngmin', 'uglify']);
 
   // For development purpose.
   grunt.registerTask('dev', ['jshint', 'karma:unit',  'concat', 'copy:demo', 'watch:livereload']);
-  grunt.registerTask('server', ['express', 'express-keepalive']);
 };
