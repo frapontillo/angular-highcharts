@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git://github.com/frapontillo/angular-highcharts.git"
   },
-  "main": "./dist/angular-highcharts.min.js",
+  "main": "./dist/angular-highcharts.js",
   "dependencies": {
     "angular": "~1.2.15",
     "highcharts-release": "highslide-software/highcharts-release#3.0.10",
