@@ -5,3 +5,4 @@ demo/.idea
 bower_components/
 npm-debug.log
 .idea/
+.sass-cache/

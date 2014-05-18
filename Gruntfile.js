@@ -1,59 +1,54 @@
+'use strict';
+
 module.exports = function (grunt) {
 
-  grunt.loadNpmTasks('grunt-contrib-watch');
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-contrib-jshint');
-  grunt.loadNpmTasks('grunt-contrib-uglify');
-  grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-ngmin');
+  // Load grunt tasks automatically
+  require('load-grunt-tasks')(grunt);
+
+  // Time how long tasks take. Can help when optimizing build times
+  require('time-grunt')(grunt);
+
+  var LIVERELOAD_PORT = 35729;
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     meta: {
       banner: '/**\n' + ' * <%= pkg.name %>\n' +
-		' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
-		' * @author <%= pkg.author.name %>\n' +
-		' * @link <%= pkg.homepage %>\n' +
+        ' * @version v<%= pkg.version %> - <%= grunt.template.today("yyyy-mm-dd") %>\n' +
+        ' * @author <%= pkg.author.name %>\n' +
+        ' * @link <%= pkg.homepage %>\n' +
         ' * @license <%= pkg.license %>\n */\n\n'
     },
-    watch: {
-      scripts: {
-        files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
-        tasks: ['jshint', 'karma:unit']
-      },
-      livereload: {
-        options: {
-          livereload: true
-        },
-        files: ['src/**/*.js'],
-        tasks: ['jshint', 'karma:unit', 'concat', 'copy:demo']
-      }
-    },
     jshint: {
-      all: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
       options: {
-        eqeqeq: true,
-        globals: {
-          angular: true
-        }
+        jshintrc: '.jshintrc',
+        reporter: require('jshint-stylish')
+      },
+      all: [
+        'Gruntfile.js',
+        'src/**/*.js'
+      ],
+      test: {
+        src: ['test/spec/**/*.js']
       }
     },
     karma: {
       options: {
-          configFile: 'karma.conf.js',
-          singleRun: true
+        configFile: 'karma.conf.js',
+        singleRun: true
       },
       unit: {
         browsers: ['PhantomJS']
       },
       local: {
-          browsers: ['Chrome']
+        browsers: ['Chrome']
       }
     },
     concat: {
       options: {
         banner: '<%= meta.banner %>',
-        process: function(src, filepath) {
+        process: function (src) {
           return src.replace(/(^|\n)[ \t]*('use strict'|"use strict");?\s*/g, '$1');
         }
       },
@@ -82,14 +77,91 @@ module.exports = function (grunt) {
       options: {
         dest: 'CHANGELOG.md'
       }
-    }
+    },
 
+    watch: {
+      scripts: {
+        files: ['Gruntfile.js', 'src/**/*.js', 'test/**/*.js'],
+        tasks: ['jshint', 'karma:unit']
+      },
+      docs: {
+        files: ['src/**/*.js', 'test/**/*.js', 'docs/content/**/*'],
+        tasks: ['gendoc'],
+        options: {
+          livereload: true
+        }
+      }
+    },
+    clean: {
+      docs: {
+        dot: true,
+        src: ['docs/*', '!docs/content/**']
+      }
+    },
+    compass: {
+      docs: {
+        options: {
+          sassDir: 'docs/content/css',
+          cssDir: 'docs/content/css'
+        }
+      }
+    },
+    ngdocs: {
+      options: {
+        dest: 'docs',
+        html5Mode: true,
+        title: 'angular-highcharts',
+        startPage: '/guide',
+        styles: ['docs/content/css/styles.css'],
+        analytics: {
+          account: 'UA-49037569-5',
+          domainName: 'angular-highcharts.github.io'
+        }
+      },
+      guide: {
+        src: ['docs/content/guide/*.ngdoc'],
+        title: 'Guide'
+      },
+      api: {
+        src: [
+          'src/**/*.js',
+          'docs/content/api/*.ngdoc'
+        ],
+        title: 'API Documentation'
+      }
+    },
+    connect: {
+      docs: {
+        options: {
+          open: {
+            target: 'http://127.0.0.1:9005'
+          },
+          port: 9005,
+          base: 'docs',
+          livereload: true
+        }
+      }
+    }
   });
 
-  grunt.registerTask('default', ['jshint', 'karma:unit']);
-  grunt.registerTask('test', ['karma:unit']);
-  grunt.registerTask('build', ['jshint', 'karma:unit', 'concat:src', 'ngmin', 'uglify']);
+  grunt.registerTask('default', ['jshint:all', 'karma:unit']);
+  grunt.registerTask('test', ['jshint:test', 'karma:unit']);
+  grunt.registerTask('build', ['jshint:all', 'karma:unit', 'concat:src', 'ngmin', 'uglify']);
+
+  // Documentation generation
+  grunt.registerTask('gendoc', ['clean:docs', 'compass:docs', 'ngdocs']);
+  // Documentation server
+  grunt.registerTask('docs', ['gendoc', 'connect:docs', 'watch:docs']);
+
+  // dgeni documentation
+  grunt.registerTask('dgeni', 'Generate docs via Dgeni.', function() {
+    var dgeni = require('dgeni');
+    var done = this.async();
+
+    var generateDocs = dgeni.generator('dgeni/dgeni.conf.js');
+    generateDocs().then(done);
+  });
 
   // For development purpose.
-  grunt.registerTask('dev', ['jshint', 'karma:unit',  'concat', 'copy:demo', 'watch:livereload']);
+  grunt.registerTask('debug', ['jshint:all', 'karma:unit', 'watch:scripts']);
 };

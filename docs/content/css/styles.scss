@@ -1,0 +1,308 @@
+p {
+  line-height: 1.6;
+  font-size: 16px;
+  color: #555;
+}
+
+a {
+  color: #5caed6;
+}
+
+h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+h2 {
+  font-size: 22.5px;
+}
+
+h2, h1 {
+  color: rgb(102, 102, 102);
+  font-weight: normal;
+}
+
+.content {
+  h2, h3, h4, h5 {
+    color: #555;
+    font-weight: normal;
+    margin-top: 0.5em;
+  }
+
+  h3 {
+    font-weight: bold;
+  }
+
+  code {
+    color: #333;
+  }
+}
+
+.header img {
+  width: 215px;
+  margin-top: 15px;
+}
+
+.hint {
+  font-size: 0.5em;
+}
+
+.nav .nav-header.module a.code {
+  word-wrap: break-word;
+}
+
+.clear-navbar {
+  margin-top: 85px;
+}
+
+.navbar-inner {
+  background: white;
+  li, a.brand {
+    line-height: 40px;
+  }
+}
+
+.navbar-fixed-top .navbar-inner {
+  box-shadow: none;
+}
+
+.nav-list {
+
+  > li {
+    > a {
+      padding: 6px 15px;
+    }
+
+    &.active {
+      > a, > a:hover {
+        background: #5caed6;;
+        color: #fff;
+      }
+
+      > a:focus {
+        box-shadow: none;
+      }
+    }
+  }
+}
+
+.navbar .nav > li > a:hover,
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .avtive > a:focus {
+  box-shadow: none;
+}
+
+.masthead {
+  padding: 70px 0 50px;
+  margin-bottom: 0;
+  /*background: #ebf5fa;*/
+
+  .container {
+    text-align: center;
+
+    &.main {
+      border-top: 1px solid rbg(212, 212, 212);
+      min-height: 300px;
+    }
+
+    p {
+      margin-top: 50px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+
+      &:hover {
+        background: rgb(20, 125, 160);
+      }
+    }
+
+    .tagline {
+      color: rgb(20, 125, 160);
+      font-size: 24px;
+      margin-top: 15px;
+      line-height: 1;
+    }
+
+    img {
+      margin-top: 60px;
+    }
+  }
+}
+
+.btn, button {
+  background: #5caed6;
+  border: 0;
+  color: #fff;
+  box-shadow: none;
+  text-shadow: none;
+
+  &:hover {
+    background: rgb(20, 125, 160);
+    color: #fff;
+    box-shadow: none;
+  }
+}
+
+.btn-group.open .btn-primary.dropdown-toggle {
+  background: rgb(20, 125, 160);
+}
+
+.divider {
+  border-top: 1px solid rgb(212, 212, 212);
+}
+
+.intro,
+.companies,
+.peeps,
+.example {
+  margin-top: 24px;
+}
+
+.example h1 {
+  margin-top: 0;
+}
+
+.companies {
+  ul {
+    list-style: none;
+
+    li {
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 25px;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  h2 {
+    margin-bottom: 15px;
+  }
+}
+
+.peeps {
+  h1 {
+    margin-bottom: 25px;
+  }
+
+  h2 {
+    margin-bottom: 15px;
+  }
+
+  blockquote {
+    border: 0;
+    padding: 0;
+    position: relative;
+    margin-top: 12px;
+
+    &:before {
+      content: "“";
+      position: absolute;
+      font-size: 125px;
+      top: 14px;
+      left: -15px;
+      color: #5caed6;
+      letter-spacing: -10px;
+    }
+
+    p {
+      line-height: 1.5;
+      background: #eee;
+      padding: 20px;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    footer span {
+      margin-top: 15px;
+      display: block;
+      margin-left: 14px;
+      color: #555;
+      font-style: italic;
+    }
+  }
+}
+
+.footer {
+  text-align: center;
+  border-top: 1px solid rgb(212, 212, 212);
+  padding: 45px 0 15px;
+  background: #fff;
+  margin-top: 40px;
+
+  a {
+    margin-left: 3px;
+    margin-right: 3px;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  img {
+    border-radius: 3px;
+  }
+
+  p {
+    color: #555;
+    text-align: center;
+    font-size: 14px;
+  }
+}
+
+.form-search {
+  input {
+    border-radius: 3px;
+  }
+
+  > ul.nav > li > a {
+    word-wrap: break-word;
+  }
+}
+
+form.well {
+  border: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding-top: 2px;
+}
+
+.dropdown-menu {
+  box-shadow: none;
+  border-radius: 0;
+  margin: -4px 0 0;
+
+  > li > a {
+    padding: 10px 20px;
+
+    &:hover,
+    &:focus {
+      background-image: none;
+      background-color: #5caed6;
+    }
+
+    > img {
+      margin-right: 8px;
+      vertical-align: -35%;
+      width: 24px;
+      padding-right: 0;
+      margin-top: 0;
+    }
+  }
+}
+
+.navbar .pull-right > li > .dropdown-menu,
+.navbar .nav > li > .dropdown-menu.pull-right {
+  &:before {
+    right: 22px;
+  }
+
+  &:after {
+    right: 23px;
+  }
+}

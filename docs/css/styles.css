@@ -1,0 +1,320 @@
+@charset "CP850";
+/* line 1, styles.scss */
+p {
+  line-height: 1.6;
+  font-size: 16px;
+  color: #555;
+}
+
+/* line 7, styles.scss */
+a {
+  color: #5caed6;
+}
+
+/* line 11, styles.scss */
+h1 {
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+/* line 16, styles.scss */
+h2 {
+  font-size: 22.5px;
+}
+
+/* line 20, styles.scss */
+h2, h1 {
+  color: #666666;
+  font-weight: normal;
+}
+
+/* line 26, styles.scss */
+.content h2, .content h3, .content h4, .content h5 {
+  color: #555;
+  font-weight: normal;
+  margin-top: 0.5em;
+}
+/* line 32, styles.scss */
+.content h3 {
+  font-weight: bold;
+}
+/* line 36, styles.scss */
+.content code {
+  color: #333;
+}
+
+/* line 41, styles.scss */
+.header img {
+  width: 215px;
+  margin-top: 15px;
+}
+
+/* line 46, styles.scss */
+.hint {
+  font-size: 0.5em;
+}
+
+/* line 50, styles.scss */
+.nav .nav-header.module a.code {
+  word-wrap: break-word;
+}
+
+/* line 54, styles.scss */
+.clear-navbar {
+  margin-top: 85px;
+}
+
+/* line 58, styles.scss */
+.navbar-inner {
+  background: white;
+}
+/* line 60, styles.scss */
+.navbar-inner li, .navbar-inner a.brand {
+  line-height: 40px;
+}
+
+/* line 65, styles.scss */
+.navbar-fixed-top .navbar-inner {
+  box-shadow: none;
+}
+
+/* line 72, styles.scss */
+.nav-list > li > a {
+  padding: 6px 15px;
+}
+/* line 77, styles.scss */
+.nav-list > li.active > a, .nav-list > li.active > a:hover {
+  background: #5caed6;
+  color: #fff;
+}
+/* line 82, styles.scss */
+.nav-list > li.active > a:focus {
+  box-shadow: none;
+}
+
+/* line 92, styles.scss */
+.navbar .nav > li > a:hover,
+.navbar .nav > .active > a,
+.navbar .nav > .active > a:hover,
+.navbar .nav > .avtive > a:focus {
+  box-shadow: none;
+}
+
+/* line 96, styles.scss */
+.masthead {
+  padding: 70px 0 50px;
+  margin-bottom: 0;
+  /*background: #ebf5fa;*/
+}
+/* line 101, styles.scss */
+.masthead .container {
+  text-align: center;
+}
+/* line 104, styles.scss */
+.masthead .container.main {
+  border-top: 1px solid rbg(212, 212, 212);
+  min-height: 300px;
+}
+/* line 109, styles.scss */
+.masthead .container p {
+  margin-top: 50px;
+}
+/* line 113, styles.scss */
+.masthead .container .btn {
+  padding: 10px 20px;
+}
+/* line 116, styles.scss */
+.masthead .container .btn:hover {
+  background: #147da0;
+}
+/* line 121, styles.scss */
+.masthead .container .tagline {
+  color: #147da0;
+  font-size: 24px;
+  margin-top: 15px;
+  line-height: 1;
+}
+/* line 128, styles.scss */
+.masthead .container img {
+  margin-top: 60px;
+}
+
+/* line 134, styles.scss */
+.btn, button {
+  background: #5caed6;
+  border: 0;
+  color: #fff;
+  box-shadow: none;
+  text-shadow: none;
+}
+/* line 141, styles.scss */
+.btn:hover, button:hover {
+  background: #147da0;
+  color: #fff;
+  box-shadow: none;
+}
+
+/* line 148, styles.scss */
+.btn-group.open .btn-primary.dropdown-toggle {
+  background: #147da0;
+}
+
+/* line 152, styles.scss */
+.divider {
+  border-top: 1px solid #d4d4d4;
+}
+
+/* line 159, styles.scss */
+.intro,
+.companies,
+.peeps,
+.example {
+  margin-top: 24px;
+}
+
+/* line 163, styles.scss */
+.example h1 {
+  margin-top: 0;
+}
+
+/* line 168, styles.scss */
+.companies ul {
+  list-style: none;
+}
+/* line 171, styles.scss */
+.companies ul li {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 25px;
+}
+/* line 176, styles.scss */
+.companies ul li:first-child {
+  margin-left: 0;
+}
+/* line 182, styles.scss */
+.companies h2 {
+  margin-bottom: 15px;
+}
+
+/* line 188, styles.scss */
+.peeps h1 {
+  margin-bottom: 25px;
+}
+/* line 192, styles.scss */
+.peeps h2 {
+  margin-bottom: 15px;
+}
+/* line 196, styles.scss */
+.peeps blockquote {
+  border: 0;
+  padding: 0;
+  position: relative;
+  margin-top: 12px;
+}
+/* line 202, styles.scss */
+.peeps blockquote:before {
+  content: "“";
+  position: absolute;
+  font-size: 125px;
+  top: 14px;
+  left: -15px;
+  color: #5caed6;
+  letter-spacing: -10px;
+}
+/* line 212, styles.scss */
+.peeps blockquote p {
+  line-height: 1.5;
+  background: #eee;
+  padding: 20px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+/* line 220, styles.scss */
+.peeps blockquote footer span {
+  margin-top: 15px;
+  display: block;
+  margin-left: 14px;
+  color: #555;
+  font-style: italic;
+}
+
+/* line 230, styles.scss */
+.footer {
+  text-align: center;
+  border-top: 1px solid #d4d4d4;
+  padding: 45px 0 15px;
+  background: #fff;
+  margin-top: 40px;
+}
+/* line 237, styles.scss */
+.footer a {
+  margin-left: 3px;
+  margin-right: 3px;
+}
+/* line 241, styles.scss */
+.footer a:hover {
+  text-decoration: none;
+}
+/* line 246, styles.scss */
+.footer img {
+  border-radius: 3px;
+}
+/* line 250, styles.scss */
+.footer p {
+  color: #555;
+  text-align: center;
+  font-size: 14px;
+}
+
+/* line 258, styles.scss */
+.form-search input {
+  border-radius: 3px;
+}
+/* line 262, styles.scss */
+.form-search > ul.nav > li > a {
+  word-wrap: break-word;
+}
+
+/* line 267, styles.scss */
+form.well {
+  border: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  padding-top: 2px;
+}
+
+/* line 275, styles.scss */
+.dropdown-menu {
+  box-shadow: none;
+  border-radius: 0;
+  margin: -4px 0 0;
+}
+/* line 280, styles.scss */
+.dropdown-menu > li > a {
+  padding: 10px 20px;
+}
+/* line 284, styles.scss */
+.dropdown-menu > li > a:hover, .dropdown-menu > li > a:focus {
+  background-image: none;
+  background-color: #5caed6;
+}
+/* line 289, styles.scss */
+.dropdown-menu > li > a > img {
+  margin-right: 8px;
+  vertical-align: -35%;
+  width: 24px;
+  padding-right: 0;
+  margin-top: 0;
+}
+
+/* line 301, styles.scss */
+.navbar .pull-right > li > .dropdown-menu:before,
+.navbar .nav > li > .dropdown-menu.pull-right:before {
+  right: 22px;
+}
+/* line 305, styles.scss */
+.navbar .pull-right > li > .dropdown-menu:after,
+.navbar .nav > li > .dropdown-menu.pull-right:after {
+  right: 23px;
+}
