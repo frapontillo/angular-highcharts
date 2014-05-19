@@ -4,7 +4,7 @@ angular.module('frapontillo.highcharts.constants')
 
   /**
    * @ngdoc object
-   * @name frapontillo.highcharts.constants.SPARKLINE_DEFAULT
+   * @name frapontillo.highcharts.constants.constant:SPARKLINE_DEFAULT
    *
    * @description
    * Default configuration for a sparkline type of chart.
@@ -65,6 +65,8 @@ angular.module('frapontillo.highcharts.constants')
         hideDelay: 0,
         shared: true,
         padding: 0,
+        headerFormat: '',
+        pointFormat: '<b>{point.y}</b>',
         positioner: function (w, h, point) {
           return { x: point.plotX - w / 2, y: point.plotY - h};
         }

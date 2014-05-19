@@ -8,10 +8,11 @@ angular.module('frapontillo.highcharts.providers')
    *
    * @description
    * `$chartDefaultsProvider` can be used during the config phase of your app to add new chart defaults options.
-   * Those options can later be used by the {@link frapontillo.highcharts.directives.chart} directive to retrieve all available defaults.
+   * Those options can later be used by the {@link frapontillo.highcharts.directives.directive:chart} directive to
+   * retrieve the desired default.
    */
   .provider('$chartDefaults', function () {
-    var chartDefaults = [];
+    var chartDefaults = {};
 
     /**
      * @ngdoc function
@@ -33,7 +34,10 @@ angular.module('frapontillo.highcharts.providers')
       if (!options) {
         throw new Error('You have to specify some options for the defaults.');
       }
-      chartDefaults.push({name: name, options: options});
+      if (chartDefaults[name]) {
+        throw new Error('The default ' + name + ' is already defined.');
+      }
+      chartDefaults[name] = options;
     };
 
     /**
@@ -43,12 +47,15 @@ angular.module('frapontillo.highcharts.providers')
      *
      * @description
      * Service to retrieve every chart default configuration.
-     * The `$chartDefaults` service is later used by the {@link frapontillo.highcharts.directives.chart} directive to retrieve all available defaults.
+     * The `$chartDefaults` service is later used by the {@link frapontillo.highcharts.directives.directive:chart}
+     * directive to retrieve the desired default.
      *
-     * @returns {Array.<Object>} All registered chart defaults.
+     * @returns {function} A getter function that accepts a default name and returns the default object.
      */
     this.$get = function () {
       // always return the array of chart defaults
-      return chartDefaults;
+      return function(name) {
+        return chartDefaults[name];
+      }
     };
   });

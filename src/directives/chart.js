@@ -4,9 +4,10 @@ angular.module('frapontillo.highcharts.directives')
 
   /**
    * @ngdoc directive
-   * @name frapontillo.highcharts.directives.chart
+   * @name frapontillo.highcharts.directives.directive:chart
    * @requires $filter
    * @requires $log
+   * @requires frapontillo.highcharts.services.$chartDefaults
    * @restrict E
    * @scope
    *
@@ -14,16 +15,15 @@ angular.module('frapontillo.highcharts.directives')
    * Directive to build HighChart charts according to the specified parameters.
    *
    * @param {object=} options The options configuration object, the same you would pass to HighCharts.
+   * @param {string@} default A default configuration name (see {@link frapontillo.highcharts.constants.constant:SPARKLINE_DEFAULT}).
    * @param {Array=} hiddenSeries Array of series indexes to hide in the chart.
    */
-  .directive('chart', function ($filter, $log) {
+  .directive('chart', function ($filter, $log, $chartDefaults) {
     return {
       restrict: 'E',
-      template: '<div></div>',
-      transclude: true,
-      replace: true,
       scope: {
         options: '=',
+        default: '@',
         hiddenSeries: '=',
         value: '=',         // TODO: remove
         type: '='           // TODO: remove
@@ -114,7 +114,7 @@ angular.module('frapontillo.highcharts.directives')
          * Some default values will be used, then the options values
          */
         var updateChart = function () {
-          if (!scope.value) {
+          if (!scope.options) {
             return;
           }
 
@@ -127,10 +127,15 @@ angular.module('frapontillo.highcharts.directives')
               width: attrs.width || null
             }
           };
+
+          // Extend the options with the provided default, if any
+          var defaultOptions = $chartDefaults(scope.default);
+          options = Highcharts.merge(options, defaultOptions);
+
           // Get the actual options implementation
           // TODO: remove when scope.value is removed
           var userOptions = scope.options || scope.value;
-          jQuery.extend(true, options, userOptions);
+          options = Highcharts.merge(options, userOptions);
 
           // Apply the scope changes after every function
           setScopeApplyToFns(options);
@@ -148,6 +153,9 @@ angular.module('frapontillo.highcharts.directives')
 
         // Update when charts data changes
         scope.$watch('options', updateChart, true);
+
+        // Update when the default changes
+        scope.$watch('default', updateChart, true);
 
         // Hide or show some series when they change
         scope.$watch('hiddenSeries', function () {
@@ -167,17 +175,21 @@ angular.module('frapontillo.highcharts.directives')
         // Update when charts data changes
         // @deprecated
         // TODO: remove
-        scope.$watch('value', function (newValue) {
-          $log.warn('angular-highcharts "value" attribute is deprecated, please use "options" instead.');
-          updateChart(newValue);
+        scope.$watch('value', function (newValue, oldValue) {
+          if (newValue !== oldValue) {
+            $log.warn('angular-highcharts "value" attribute is deprecated, please use "options" instead.');
+            updateChart(newValue);
+          }
         }, true);
 
         // Update when chart type changes
         // @deprecated
         // TODO: remove
-        scope.$watch('type', function (newValue) {
-          $log.warn('angular-highcharts "type" attribute is deprecated, please use "options" instead.');
-          updateChart(newValue);
+        scope.$watch('type', function (newValue, oldValue) {
+          if (newValue !== oldValue) {
+            $log.warn('angular-highcharts "type" attribute is deprecated, please use "options" instead.');
+            updateChart(newValue);
+          }
         });
       }
     };
