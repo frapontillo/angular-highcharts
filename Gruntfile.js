@@ -88,7 +88,7 @@ module.exports = function (grunt) {
         files: ['src/**/*.js', 'test/**/*.js', 'docs/content/**/*'],
         tasks: ['gendoc'],
         options: {
-          livereload: true
+          livereload: LIVERELOAD_PORT
         }
       }
     },
@@ -109,7 +109,7 @@ module.exports = function (grunt) {
     ngdocs: {
       options: {
         dest: 'docs',
-        html5Mode: true,
+        html5Mode: false,
         title: 'angular-highcharts',
         startPage: '/guide',
         styles: ['docs/content/css/styles.css'],
@@ -138,14 +138,14 @@ module.exports = function (grunt) {
           },
           port: 9005,
           base: 'docs',
-          livereload: true
+          livereload: LIVERELOAD_PORT
         }
       }
     }
   });
 
   grunt.registerTask('default', ['jshint:all', 'karma:unit']);
-  grunt.registerTask('test', ['jshint:test', 'karma:unit']);
+  grunt.registerTask('test', ['jshint:all', 'karma:unit']);
   grunt.registerTask('build', ['jshint:all', 'karma:unit', 'concat:src', 'ngmin', 'uglify']);
 
   // Documentation generation

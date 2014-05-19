@@ -99,7 +99,7 @@ NG_DOCS={
     "guide": false,
     "api": true
   },
-  "html5Mode": true,
+  "html5Mode": false,
   "startPage": "/guide",
   "scripts": [
     "angular.min.js"
