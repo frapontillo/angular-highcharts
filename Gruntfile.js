@@ -108,11 +108,13 @@ module.exports = function (grunt) {
     },
     ngdocs: {
       options: {
-        dest: 'docs',
+        dest: 'docs/docs',
         html5Mode: false,
         title: 'angular-highcharts',
+        titleLink: '/',
         startPage: '/guide',
         styles: ['docs/content/css/styles.css'],
+        navTemplate: 'docs/content/html/nav.html',
         analytics: {
           account: 'UA-49037569-5',
           domainName: 'angular-highcharts.github.io'
@@ -128,6 +130,18 @@ module.exports = function (grunt) {
           'docs/content/api/*.ngdoc'
         ],
         title: 'API Documentation'
+      }
+    },
+    copy: {
+      docs_index: {
+        files: [
+          {
+            src: ['index.html'],
+            dest: 'docs/',
+            cwd: 'docs/content/html/',
+            expand: true
+          }
+        ]
       }
     },
     connect: {
@@ -149,7 +163,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', ['jshint:all', 'karma:unit', 'concat:src', 'ngmin', 'uglify']);
 
   // Documentation generation
-  grunt.registerTask('gendoc', ['clean:docs', 'compass:docs', 'ngdocs']);
+  grunt.registerTask('gendoc', ['clean:docs', 'compass:docs', 'ngdocs', 'copy:docs_index']);
   // Documentation server
   grunt.registerTask('docs', ['gendoc', 'connect:docs', 'watch:docs']);
 

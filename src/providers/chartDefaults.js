@@ -8,7 +8,7 @@ angular.module('frapontillo.highcharts.providers')
    *
    * @description
    * `$chartDefaultsProvider` can be used during the config phase of your app to add new chart defaults options.
-   * Those options can later be used by the {@link frapontillo.highcharts.directives.chart} directive to retrieve all available defaults.
+   * Those options can later be used by the {@link frapontillo.highcharts.directives.directive:chart} directive to retrieve all available defaults.
    */
   .provider('$chartDefaults', function () {
     var chartDefaults = [];
@@ -43,7 +43,7 @@ angular.module('frapontillo.highcharts.providers')
      *
      * @description
      * Service to retrieve every chart default configuration.
-     * The `$chartDefaults` service is later used by the {@link frapontillo.highcharts.directives.chart} directive to retrieve all available defaults.
+     * The `$chartDefaults` service is later used by the {@link frapontillo.highcharts.directives.directive:chart} directive to retrieve all available defaults.
      *
      * @returns {Array.<Object>} All registered chart defaults.
      */

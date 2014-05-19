@@ -42,12 +42,12 @@ NG_DOCS={
     },
     {
       "section": "api",
-      "id": "frapontillo.highcharts.constants.SPARKLINE_DEFAULT",
-      "shortName": "frapontillo.highcharts.constants.SPARKLINE_DEFAULT",
+      "id": "frapontillo.highcharts.constants.constant:SPARKLINE_DEFAULT",
+      "shortName": "SPARKLINE_DEFAULT",
       "type": "object",
       "moduleName": "frapontillo.highcharts.constants",
       "shortDescription": "Default configuration for a sparkline type of chart.",
-      "keywords": "api chart configuration constants default defaults frapontillo highcharts object sparkline sparkline_default type"
+      "keywords": "api chart configuration constant constants default defaults frapontillo highcharts object sparkline sparkline_default type"
     },
     {
       "section": "api",
@@ -60,8 +60,8 @@ NG_DOCS={
     },
     {
       "section": "api",
-      "id": "frapontillo.highcharts.directives.chart",
-      "shortName": "frapontillo.highcharts.directives.chart",
+      "id": "frapontillo.highcharts.directives.directive:chart",
+      "shortName": "chart",
       "type": "directive",
       "moduleName": "frapontillo.highcharts.directives",
       "shortDescription": "Directive to build HighChart charts according to the specified parameters.",

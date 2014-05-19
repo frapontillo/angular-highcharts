@@ -22,6 +22,10 @@ h2, h1 {
   font-weight: normal;
 }
 
+input {
+  border-radius: 0px;
+}
+
 .content {
   h2, h3, h4, h5 {
     color: #555;
@@ -36,6 +40,10 @@ h2, h1 {
   code {
     color: #333;
   }
+}
+
+.breadcrumb {
+  border-radius: 0px;
 }
 
 .header img {
@@ -67,6 +75,8 @@ h2, h1 {
 }
 
 .nav-list {
+
+  border-radius: 0px;
 
   > li {
     > a {
@@ -150,7 +160,7 @@ h2, h1 {
 }
 
 .divider {
-  border-top: 1px solid rgb(212, 212, 212);
+  //border-top: 1px solid rgb(212, 212, 212);
 }
 
 .intro,
@@ -256,7 +266,7 @@ h2, h1 {
 
 .form-search {
   input {
-    border-radius: 3px;
+    border-radius: 0px;
   }
 
   > ul.nav > li > a {

@@ -4,7 +4,7 @@ angular.module('frapontillo.highcharts.constants')
 
   /**
    * @ngdoc object
-   * @name frapontillo.highcharts.constants.SPARKLINE_DEFAULT
+   * @name frapontillo.highcharts.constants.constant:SPARKLINE_DEFAULT
    *
    * @description
    * Default configuration for a sparkline type of chart.

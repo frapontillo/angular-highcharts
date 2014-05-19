@@ -4,7 +4,7 @@ angular.module('frapontillo.highcharts.directives')
 
   /**
    * @ngdoc directive
-   * @name frapontillo.highcharts.directives.chart
+   * @name frapontillo.highcharts.directives.directive:chart
    * @requires $filter
    * @requires $log
    * @restrict E
