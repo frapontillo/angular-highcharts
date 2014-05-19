@@ -133,7 +133,7 @@ module.exports = function (grunt) {
       }
     },
     copy: {
-      docs_index: {
+      docsIndex: {
         files: [
           {
             src: ['index.html'],
@@ -163,7 +163,7 @@ module.exports = function (grunt) {
   grunt.registerTask('build', ['jshint:all', 'karma:unit', 'concat:src', 'ngmin', 'uglify']);
 
   // Documentation generation
-  grunt.registerTask('gendoc', ['clean:docs', 'compass:docs', 'ngdocs', 'copy:docs_index']);
+  grunt.registerTask('gendoc', ['clean:docs', 'compass:docs', 'ngdocs', 'copy:docsIndex']);
   // Documentation server
   grunt.registerTask('docs', ['gendoc', 'connect:docs', 'watch:docs']);
 

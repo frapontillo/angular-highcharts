@@ -11,10 +11,13 @@
 </li>
 <li><code ng:non-bindable=""><a href="#/api/ng.$log">$log</a></code>
 </li>
+<li><code ng:non-bindable=""><a href="#/api/frapontillo.highcharts.services.$chartDefaults">$chartDefaults</a></code>
+</li>
 </ul>
 <h2 id="usage">Usage</h2>
 <div class="usage">as element:<pre class="prettyprint linenums">&lt;chart
        [options="{object}"]
+       [default="{string}"]
        [hidden-series="{Array}"]&gt;
 &lt;/chart&gt;</pre>
 <h3 id="usage_directive-info">Directive info</h3>
@@ -22,6 +25,7 @@
 </ul>
 </div>
 <h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>options <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-object">object</a></td><td><div class="frapontillo-highcharts-directives-directive-page frapontillo-highcharts-directives-directive-chart-page"><p>The options configuration object, the same you would pass to HighCharts.</p>
+</div></td></tr><tr><td>default <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="frapontillo-highcharts-directives-directive-page frapontillo-highcharts-directives-directive-chart-page"><p>A default configuration name (see <a href="#/api/frapontillo.highcharts.constants.constant:SPARKLINE_DEFAULT">frapontillo.highcharts.constants.constant:SPARKLINE_DEFAULT</a>).</p>
 </div></td></tr><tr><td>hiddenSeries <div><em>(optional)</em></div></td><td><a href="" class="label type-hint type-hint-array">Array</a></td><td><div class="frapontillo-highcharts-directives-directive-page frapontillo-highcharts-directives-directive-chart-page"><p>Array of series indexes to hide in the chart.</p>
 </div></td></tr></tbody></table></div>
 </div>

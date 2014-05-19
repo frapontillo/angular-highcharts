@@ -65,7 +65,7 @@ NG_DOCS={
       "type": "directive",
       "moduleName": "frapontillo.highcharts.directives",
       "shortDescription": "Directive to build HighChart charts according to the specified parameters.",
-      "keywords": "$filter $log api array build chart charts configuration directive directives frapontillo hiddenseries hide highchart highcharts indexes object options parameters pass series"
+      "keywords": "$chartdefaults $filter $log api array build chart charts configuration constant constants default directive directives frapontillo hiddenseries hide highchart highcharts indexes object options parameters pass series services"
     },
     {
       "section": "api",
@@ -83,7 +83,7 @@ NG_DOCS={
       "type": "service",
       "moduleName": "frapontillo.highcharts.providers",
       "shortDescription": "Service to retrieve every chart default configuration.",
-      "keywords": "$chartdefaults api chart configuration default defaults directive directives frapontillo function highcharts providers registered retrieve service"
+      "keywords": "$chartdefaults accepts api chart configuration default desired directive directives frapontillo function getter highcharts object providers retrieve returns service"
     },
     {
       "section": "api",
@@ -92,7 +92,7 @@ NG_DOCS={
       "type": "object",
       "moduleName": "frapontillo.highcharts.providers",
       "shortDescription": "$chartDefaultsProvider can be used during the config phase of your app to add new chart defaults options.",
-      "keywords": "$chartdefaultsprovider add adddefault api app chart config default defaults defined directive directives frapontillo function highcharts object options phase providers retrieve"
+      "keywords": "$chartdefaultsprovider add adddefault api app chart config default defaults defined desired directive directives frapontillo function highcharts object options phase providers retrieve"
     }
   ],
   "apis": {

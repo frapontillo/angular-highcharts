@@ -56,6 +56,6 @@ angular.module('frapontillo.highcharts.providers')
       // always return the array of chart defaults
       return function(name) {
         return chartDefaults[name];
-      }
+      };
     };
   });

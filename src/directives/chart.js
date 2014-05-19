@@ -15,7 +15,7 @@ angular.module('frapontillo.highcharts.directives')
    * Directive to build HighChart charts according to the specified parameters.
    *
    * @param {object=} options The options configuration object, the same you would pass to HighCharts.
-   * @param {string@} default A default configuration name (see {@link frapontillo.highcharts.constants.constant:SPARKLINE_DEFAULT}).
+   * @param {string=} default A default configuration name (see {@link frapontillo.highcharts.constants.constant:SPARKLINE_DEFAULT}).
    * @param {Array=} hiddenSeries Array of series indexes to hide in the chart.
    */
   .directive('chart', function ($filter, $log, $chartDefaults) {
