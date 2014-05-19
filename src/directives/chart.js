@@ -7,6 +7,7 @@ angular.module('frapontillo.highcharts.directives')
    * @name frapontillo.highcharts.directives.directive:chart
    * @requires $filter
    * @requires $log
+   * @requires $timeout
    * @requires frapontillo.highcharts.services.$chartDefaults
    * @restrict E
    * @scope
@@ -14,19 +15,17 @@ angular.module('frapontillo.highcharts.directives')
    * @description
    * Directive to build HighChart charts according to the specified parameters.
    *
-   * @param {object=} options The options configuration object, the same you would pass to HighCharts.
+   * @param {string=} options The options configuration object name.
    * @param {string=} default A default configuration name (see {@link frapontillo.highcharts.constants.constant:SPARKLINE_DEFAULT}).
-   * @param {Array=} hiddenSeries Array of series indexes to hide in the chart.
+   * @param {string=} hiddenSeries Name of the array of series indexes that will be hidden hide in the chart.
    */
-  .directive('chart', function ($filter, $log, $chartDefaults) {
+  .directive('chart', function ($filter, $log, $timeout, $chartDefaults) {
     return {
       restrict: 'E',
       scope: {
         options: '=',
         default: '@',
-        hiddenSeries: '=',
-        value: '=',         // TODO: remove
-        type: '='           // TODO: remove
+        hiddenSeries: '='
       },
 
       link: function (scope, element, attrs) {
@@ -49,9 +48,11 @@ angular.module('frapontillo.highcharts.directives')
           }
           // If the new array is different than the old one, edit the scope variable
           if (!angular.equals(scope.hiddenSeries, hiddenItems)) {
-            angular.copy(hiddenItems, scope.hiddenSeries);
-            // Since the event is called outside of AngularJS, we have to apply the changes
-            scope.$apply();
+            $timeout(function() {
+              angular.copy(hiddenItems, scope.hiddenSeries);
+              // Since the event is called outside of AngularJS, we have to apply the changes
+              scope.$apply();
+            });
           }
         };
 
@@ -63,7 +64,7 @@ angular.module('frapontillo.highcharts.directives')
             return;
           }
           // Loop through the chart series
-          for (var s in scope.chart.series) {
+          for (var s in chart.series) {
             // Show or hide the series in scope.hiddenSeries
             var show = !($filter('filter')(scope.hiddenSeries, s).length);
             chart.series[s].setVisible(show, false);
@@ -133,8 +134,7 @@ angular.module('frapontillo.highcharts.directives')
           options = Highcharts.merge(options, defaultOptions);
 
           // Get the actual options implementation
-          // TODO: remove when scope.value is removed
-          var userOptions = scope.options || scope.value;
+          var userOptions = scope.options;
           options = Highcharts.merge(options, userOptions);
 
           // Apply the scope changes after every function
@@ -151,11 +151,11 @@ angular.module('frapontillo.highcharts.directives')
           showHideSeries();
         };
 
-        // Update when charts data changes
-        scope.$watch('options', updateChart, true);
-
         // Update when the default changes
         scope.$watch('default', updateChart, true);
+
+        // Update when charts data changes
+        scope.$watch('options', updateChart, true);
 
         // Hide or show some series when they change
         scope.$watch('hiddenSeries', function () {
@@ -169,26 +169,6 @@ angular.module('frapontillo.highcharts.directives')
         scope.$on('$destroy', function () {
           if (chart) {
             chart.destroy();
-          }
-        });
-
-        // Update when charts data changes
-        // @deprecated
-        // TODO: remove
-        scope.$watch('value', function (newValue, oldValue) {
-          if (newValue !== oldValue) {
-            $log.warn('angular-highcharts "value" attribute is deprecated, please use "options" instead.');
-            updateChart(newValue);
-          }
-        }, true);
-
-        // Update when chart type changes
-        // @deprecated
-        // TODO: remove
-        scope.$watch('type', function (newValue, oldValue) {
-          if (newValue !== oldValue) {
-            $log.warn('angular-highcharts "type" attribute is deprecated, please use "options" instead.');
-            updateChart(newValue);
           }
         });
       }
