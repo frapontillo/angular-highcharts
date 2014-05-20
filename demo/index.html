@@ -13,30 +13,65 @@
 
     <script src="../bower_components/jquery/jquery.js"></script>
     <script src="../bower_components/highcharts-release/highcharts.src.js"></script>
+    <script src="../bower_components/highcharts-release/highcharts-more.src.js"></script>
+    <script src="../bower_components/highcharts-release/modules/solid-gauge.src.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
     <script src="../src/common.js"></script>
     <script src="../src/constants/sparklineDefault.js"></script>
+    <script src="../src/constants/solidgaugeDefault.js"></script>
     <script src="../src/providers/chartDefaults.js"></script>
     <script src="../src/directives/chart.js"></script>
     <script>
         var app = angular.module('frapontillo.highcharts.demo', ['frapontillo.highcharts']);
 
-        app.controller('DemoCtrl', function ($scope, SPARKLINE_DEFAULT) {
-            $scope.data = [1,2,3,4,5,3,2,4,1,2,4];
-            $scope.options = {
-                series: [{
-                    data: $scope.data
-                }]
+        app.controller('DemoCtrl', function ($scope, SPARKLINE_DEFAULT, SOLIDGAUGE_DEFAULT) {
+
+            $scope.sparkline = {
+                options: {
+                    series: [{
+                        data: [1,2,3,4,5,3,2,4,1,2,4]
+                    }]
+                },
+                default: SPARKLINE_DEFAULT.name
             };
-            $scope.sparklineDefault = SPARKLINE_DEFAULT.name;
+
+            $scope.solidgauge = {
+                options: {
+                    yAxis: {
+                        min: 0,
+                        max: 200,
+                        title: {
+                            text: 'Speed'
+                        }
+                    },
+                    series: [{
+                        name: 'Speed',
+                        data: [80],
+                        dataLabels: {
+                            format: '{y}'
+                        }
+                    }]
+                },
+                default: SOLIDGAUGE_DEFAULT.name
+            };
         });
     </script>
+
+    <style type="text/css">
+        chart {
+            display: block;
+            width: 200px;
+            height: 100px;
+        }
+    </style>
 </head>
 
 <body ng-app="frapontillo.highcharts.demo">
     <div ng-controller="DemoCtrl">
         <h2>Sparkline</h2>
-        <chart options="options" default="{{sparklineDefault}}"></chart>
+        <chart options="sparkline.options" default="{{sparkline.default}}"></chart>
+        <h2>Solid Gauge</h2>
+        <chart options="solidgauge.options" default="{{solidgauge.default}}"></chart>
     </div>
 </body>
 </html>

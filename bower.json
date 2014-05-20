@@ -10,11 +10,11 @@
   },
   "main": "./dist/angular-highcharts.js",
   "dependencies": {
-    "angular": "~1.2.15",
+    "angular": "~1.2.16",
     "highcharts-release": "~4.0.1",
     "jquery": "~2.0.3"
   },
   "devDependencies": {
-    "angular-mocks": "~1.2.15"
+    "angular-mocks": "~1.2.16"
   }
 }
