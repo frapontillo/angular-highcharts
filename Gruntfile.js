@@ -158,9 +158,8 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.registerTask('default', ['jshint:all', 'karma:unit']);
   grunt.registerTask('test', ['jshint:all', 'karma:unit']);
-  grunt.registerTask('build', ['jshint:all', 'karma:unit', 'concat:src', 'ngmin', 'uglify']);
+  grunt.registerTask('build', ['concat:src', 'ngmin', 'uglify']);
 
   // Documentation generation
   grunt.registerTask('gendoc', ['clean:docs', 'compass:docs', 'ngdocs', 'copy:docsIndex']);
@@ -178,4 +177,6 @@ module.exports = function (grunt) {
 
   // For development purpose.
   grunt.registerTask('debug', ['jshint:all', 'karma:unit', 'watch:scripts']);
+
+  grunt.registerTask('default', ['test', 'build']);
 };
